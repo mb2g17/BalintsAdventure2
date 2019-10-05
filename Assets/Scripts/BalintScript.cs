@@ -60,5 +60,11 @@ public class BalintScript : MonoBehaviour
         {
             animator.SetBool("Jump", true);
         }
+
+        // Casting
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("Cast");
+        }
     }
 }
