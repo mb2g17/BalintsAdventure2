@@ -108,10 +108,15 @@ public class PauseMenuScript : MonoBehaviour
                 Slot1Spell = spell;
                 Slot1Quantity = 1;
             }
-            else
+            else if (Slot2Spell == Spell.NOTHING)
             {
                 Slot2Spell = spell;
                 Slot2Quantity = 1;
+            }
+            else
+            {
+                // Increment 1 from inventory (turns out we didn't move anything after all)
+                GameState.Instance.Quantities[spell]++;
             }
         }
     }
