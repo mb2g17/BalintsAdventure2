@@ -459,7 +459,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2f6e93b23582680479a14266703b94d8, type: 3}
+  m_Sprite: {fileID: 8375162101763202838, guid: 2f6e93b23582680479a14266703b94d8,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -482,6 +483,7 @@ GameObject:
   - component: {fileID: 1702008297}
   - component: {fileID: 1702008298}
   - component: {fileID: 1702008299}
+  - component: {fileID: 1702008300}
   m_Layer: 0
   m_Name: Balint
   m_TagString: Untagged
@@ -565,3 +567,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementForce: 70
+--- !u!95 &1702008300
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702008295}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 739a5ea525c9a14459df866549b30f1f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
