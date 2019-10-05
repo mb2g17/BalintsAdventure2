@@ -92,6 +92,10 @@ public class PauseMenuScript : MonoBehaviour
     {
         Spell spell = (Spell) Enum.Parse(typeof(Spell), spellName);
 
+        // If this is a tier 3 spell, do nothing
+        if ((int)spell >= 13)
+            return;
+
         // Deduct 1 from inventory
         GameState.Instance.Quantities[spell]--;
 
