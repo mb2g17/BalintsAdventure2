@@ -48,6 +48,11 @@ namespace Assets.Scripts
 
             // Show the beginner spell
             Quantities[Spell.NOTHING] = -2;
+
+            // -- DEBUG --
+            foreach (Spell spell in Enum.GetValues(typeof(Spell)))
+                Quantities[spell] = 100;
+            // -----------
         }
 
         /// <summary>
