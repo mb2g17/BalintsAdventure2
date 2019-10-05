@@ -19,6 +19,8 @@ public class BalintScript : MonoBehaviour
 
     public float JumpingForce = 5;
 
+    public Animator PauseAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,45 +32,64 @@ public class BalintScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Moving left and right
-        if (Input.GetKey(KeyCode.A))
+        // If time is moving
+        if (Time.timeScale > 0)
         {
-            rigidbody2D.AddForce(new Vector2(-MovementForce, 0));
-            animator.SetBool("Move", true);
-            animator.SetBool("Left", true);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            rigidbody2D.AddForce(new Vector2(MovementForce, 0));
-            animator.SetBool("Move", true);
-            animator.SetBool("Left", false);
-        }
-        else
-        {
-            animator.SetBool("Move", false);
+            // Moving left and right
+            if (Input.GetKey(KeyCode.A))
+            {
+                rigidbody2D.AddForce(new Vector2(-MovementForce, 0));
+                animator.SetBool("Move", true);
+                animator.SetBool("Left", true);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                rigidbody2D.AddForce(new Vector2(MovementForce, 0));
+                animator.SetBool("Move", true);
+                animator.SetBool("Left", false);
+            }
+            else
+            {
+                animator.SetBool("Move", false);
+            }
+
+            // Jumping
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                rigidbody2D.AddForce(new Vector2(0, JumpingForce));
+            }
+
+            // Animates jumping
+            if (System.Math.Abs(rigidbody2D.velocity.y) <= 0.5f)
+            {
+                animator.SetBool("Jump", false);
+            }
+            else
+            {
+                animator.SetBool("Jump", true);
+            }
+
+            // Casting
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                animator.SetTrigger("Cast");
+                spellCaster.CastSpell();
+            }
         }
 
-        // Jumping
-        if (Input.GetKeyDown(KeyCode.W))
+        // Pausing
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            rigidbody2D.AddForce(new Vector2(0, JumpingForce));
-        }
-
-        // Animates jumping
-        if (System.Math.Abs(rigidbody2D.velocity.y) <= 0.5f)
-        {
-            animator.SetBool("Jump", false);
-        }
-        else
-        {
-            animator.SetBool("Jump", true);
-        }
-
-        // Casting
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            animator.SetTrigger("Cast");
-            spellCaster.CastSpell();
+            if (PauseAnimator.GetBool("Pause"))
+            {
+                PauseAnimator.SetBool("Pause", false);
+                Time.timeScale = 1;
+            }
+            else
+            {
+                PauseAnimator.SetBool("Pause", true);
+                Time.timeScale = 0;
+            }
         }
     }
 }
