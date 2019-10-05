@@ -5,23 +5,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CustomPropertyDrawer(typeof(IconDictionary))]
-public class IconDictionaryDrawer : DictionaryDrawer<Spell, Sprite> { }
-
-[Serializable]
-public class IconDictionary : SerializableDictionary<Spell, Sprite> { }
-
 public class PauseMenuScript : MonoBehaviour
 {
-    public Image Slot1Image, Slot2Image;
-
-    public IconDictionary SpellIcons;
+    public UISlotScript Slot1Image, Slot2Image;
 
     // Start is called before the first frame update
     void Start()
     {
-        EmptyImage(Slot1Image);
-        EmptyImage(Slot2Image);
     }
 
     // Update is called once per frame
@@ -32,32 +22,21 @@ public class PauseMenuScript : MonoBehaviour
 
     public void ClearSlot1()
     {
-        EmptyImage(Slot1Image);
+        Slot1Image.Spell = Spell.NOTHING;
     }
 
     public void ClearSlot2()
     {
-        EmptyImage(Slot2Image);
+        Slot2Image.Spell = Spell.NOTHING;
     }
     
     public void SpellClick(string spellName)
     {
         Spell spell = (Spell) Enum.Parse(typeof(Spell), spellName);
 
-        if (Slot1Image.color.a == 0)
-            FillImage(Slot1Image, SpellIcons[spell]);
+        if (Slot1Image.IconImage.color.a == 0)
+            Slot1Image.Spell = spell;
         else
-            FillImage(Slot2Image, SpellIcons[spell]);
-    }
-
-    private void EmptyImage(Image image)
-    {
-        image.color = new Color(1, 1, 1, 0);
-    }
-
-    private void FillImage(Image image, Sprite sprite)
-    {
-        image.sprite = sprite;
-        image.color = new Color(1, 1, 1, 1);
+            Slot2Image.Spell = spell;
     }
 }
