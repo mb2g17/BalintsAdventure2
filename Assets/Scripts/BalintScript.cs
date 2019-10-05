@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,9 @@ using UnityEngine;
 /// </summary>
 public class BalintScript : MonoBehaviour
 {
-    private Rigidbody2D rigidbody2D;
+    private new Rigidbody2D rigidbody2D;
     private Animator animator;
+    private SpellCaster spellCaster;
 
     /// <summary>
     /// How much force we will move
@@ -22,6 +24,7 @@ public class BalintScript : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spellCaster = FindObjectOfType<SpellCaster>();
     }
 
     // Update is called once per frame
@@ -65,6 +68,7 @@ public class BalintScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetTrigger("Cast");
+            spellCaster.CastSpell();
         }
     }
 }

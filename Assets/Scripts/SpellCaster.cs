@@ -1,0 +1,24 @@
+﻿using Assets.Scripts;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpellCaster : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void CastSpell()
+    {
+        Debug.Log(GameState.Instance.CurrentSpell);
+    }
+}
