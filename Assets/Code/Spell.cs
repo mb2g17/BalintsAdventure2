@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-enum Spell
+[Serializable]
+public enum Spell
 {
     NOTHING,
     FIRE,
