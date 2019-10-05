@@ -70,7 +70,7 @@ public class BalintScript : MonoBehaviour
             }
 
             // Casting
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 animator.SetTrigger("Cast");
                 spellCaster.CastSpell();
@@ -78,7 +78,7 @@ public class BalintScript : MonoBehaviour
         }
 
         // Pausing
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(1))
         {
             if (PauseAnimator.GetBool("Pause"))
             {
