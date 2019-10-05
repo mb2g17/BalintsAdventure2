@@ -124,4 +124,28 @@ public class PauseMenuScript : MonoBehaviour
             }
         }
     }
+
+    public void Craft()
+    {
+        // Crafts
+        (Spell resultSpell1,
+         int resultQuantity1,
+         Spell resultSpell2,
+         int resultQuantity2) = GameState.Instance.Craft(Slot1Spell, Slot2Spell, Slot1Quantity, Slot2Quantity);
+
+        // Updates inventory
+        GameState.Instance.Quantities[resultSpell1] += resultQuantity1;
+        GameState.Instance.Quantities[resultSpell2] += resultQuantity2;
+
+        Debug.Log(resultSpell1);
+        Debug.Log(resultQuantity1);
+        Debug.Log(resultSpell2);
+        Debug.Log(resultQuantity2);
+
+        // Clears model
+        Slot1Spell = Spell.NOTHING;
+        Slot1Quantity = 0;
+        Slot2Spell = Spell.NOTHING;
+        Slot2Quantity = 0;
+    }
 }

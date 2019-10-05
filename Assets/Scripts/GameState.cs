@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -69,7 +70,11 @@ namespace Assets.Scripts
             LearnedMappings.Add((spell1, spell2));
 
             // Gets the two spells from this
-            (Spell resultSpell1, Spell resultSpell2) = mappings[(spell1, spell2)];
+            Spell resultSpell1, resultSpell2;
+            if (mappings.ContainsKey((spell1, spell2)))
+                (resultSpell1, resultSpell2) = mappings[(spell1, spell2)];
+            else
+                (resultSpell1, resultSpell2) = mappings[(spell2, spell1)];
 
             // Gets the new quantity
             int newQuantity = (quantity1 + quantity2) / 3;
@@ -77,6 +82,9 @@ namespace Assets.Scripts
             // If there's two spells, split it in half
             if (resultSpell1 != Spell.NOTHING && resultSpell2 != Spell.NOTHING)
                 newQuantity /= 2;
+
+            // If we've ended up with 0, round to 1
+            newQuantity = newQuantity == 0 ? 1 : newQuantity;
 
             // Returns new spells
             return (
