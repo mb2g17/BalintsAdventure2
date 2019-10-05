@@ -481,6 +481,7 @@ GameObject:
   - component: {fileID: 1702008296}
   - component: {fileID: 1702008297}
   - component: {fileID: 1702008298}
+  - component: {fileID: 1702008299}
   m_Layer: 0
   m_Name: Balint
   m_TagString: Untagged
@@ -543,11 +544,24 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &1702008299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702008295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad483b701cd0764e8909c54aa812c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementForce: 70
