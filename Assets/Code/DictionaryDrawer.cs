@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityObject = UnityEngine.Object;
 
+#if UNITY_EDITOR
 public abstract class DictionaryDrawer<TK, TV> : PropertyDrawer
 {
     private SerializableDictionary<TK, TV> _Dictionary;
@@ -172,3 +173,4 @@ public abstract class DictionaryDrawer<TK, TV> : PropertyDrawer
         }
     }
 }
+#endif

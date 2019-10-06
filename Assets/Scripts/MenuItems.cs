@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class MenuItems : MonoBehaviour
 {
+#if UNITY_EDITOR
     [MenuItem("Bálint's Adventure/Unlock all spells")]
     static void UnlockAllSpells()
     {
@@ -51,4 +52,15 @@ public class MenuItems : MonoBehaviour
         foreach ((Spell, Spell) spellPair in GameState.Instance.Mappings.Keys)
             GameState.Instance.LearnedMappings.Add(spellPair);
     }
+
+    [MenuItem("Bálint's Adventure/DEBUG")]
+    static void DEBUG()
+    {
+        foreach ((Spell, Spell) spellPair in GameState.Instance.Mappings.Keys)
+            GameState.Instance.LearnedMappings.Add(spellPair);
+
+        GameState.Instance.LearnedMappings.Remove((Spell.FIRE, Spell.WATER));
+        GameState.Instance.LearnedMappings.Add((Spell.WATER, Spell.FIRE));
+    }
+#endif
 }

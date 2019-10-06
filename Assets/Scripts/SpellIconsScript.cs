@@ -5,8 +5,10 @@ using UnityEditor;
 using UnityEngine;
 
 
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(IconDictionary))]
 public class IconDictionaryDrawer : DictionaryDrawer<Spell, Sprite> { }
+#endif
 
 [Serializable]
 public class IconDictionary : SerializableDictionary<Spell, Sprite> { }

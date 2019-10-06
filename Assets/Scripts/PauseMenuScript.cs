@@ -94,7 +94,17 @@ public class PauseMenuScript : MonoBehaviour
                     UnlockedText.text += "???\n";
             }
 
-            if (GameState.Instance.Mappings.Count == GameState.Instance.LearnedMappings.Count)
+            // Checks if we've won the game
+            bool won = true;
+            foreach (var spellPair in GameState.Instance.Mappings.Keys)
+            {
+                if (!GameState.Instance.LearnedMappings.Contains(spellPair))
+                {
+                    won = false;
+                    break;
+                }
+            }
+            if (won)
             {
                 SceneManager.LoadScene("PreWin");
             }
