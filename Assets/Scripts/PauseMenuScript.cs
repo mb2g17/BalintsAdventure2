@@ -182,6 +182,12 @@ public class PauseMenuScript : MonoBehaviour
          Spell resultSpell2,
          int resultQuantity2) = GameState.Instance.Craft(Slot1Spell, Slot2Spell, Slot1Quantity, Slot2Quantity);
 
+        // If the quantities are -1 (newly discovered), set them to zero before adding
+        if (GameState.Instance.Quantities[resultSpell1] == -1)
+            GameState.Instance.Quantities[resultSpell1] = 0;
+        if (GameState.Instance.Quantities[resultSpell2] == -1)
+            GameState.Instance.Quantities[resultSpell2] = 0;
+
         // Updates inventory
         GameState.Instance.Quantities[resultSpell1] += resultQuantity1;
         GameState.Instance.Quantities[resultSpell2] += resultQuantity2;
