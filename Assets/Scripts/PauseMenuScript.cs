@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenuScript : MonoBehaviour
@@ -222,5 +223,15 @@ public class PauseMenuScript : MonoBehaviour
     public void Unequip()
     {
         GameState.Instance.CurrentSpell = Spell.NOTHING;
+    }
+
+    /// <summary>
+    /// Leaves the area and goes to the map
+    /// </summary>
+    public void LeaveArea()
+    {
+        ClearSlot1();
+        ClearSlot2();
+        SceneManager.LoadScene("Map");
     }
 }

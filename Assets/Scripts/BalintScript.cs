@@ -33,6 +33,7 @@ public class BalintScript : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spellCaster = FindObjectOfType<SpellCaster>();
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
