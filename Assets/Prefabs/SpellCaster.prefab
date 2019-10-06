@@ -47,3 +47,5 @@ MonoBehaviour:
     type: 3}
   FirePrefab: {fileID: 2584931777895287788, guid: 9a2f3bf07b36c204bbb98071c88555c8,
     type: 3}
+  WaterPrefab: {fileID: 2584931777895287788, guid: 99f43c3a1f1c11d49aa2c0823426639c,
+    type: 3}
