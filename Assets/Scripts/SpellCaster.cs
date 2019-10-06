@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class SpellCaster : MonoBehaviour
 {
-    public GameObject NothingPrefab;
+    public GameObject
+        NothingPrefab,
+        FirePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +27,25 @@ public class SpellCaster : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = -5;
 
-        switch (GameState.Instance.CurrentSpell)
+        // If we have enough
+        if (GameState.Instance.Quantities[GameState.Instance.CurrentSpell] > 0 ||
+            GameState.Instance.Quantities[GameState.Instance.CurrentSpell] == -2)
         {
-            case Spell.NOTHING:
-                GameObject attack = Instantiate(NothingPrefab);
-                attack.transform.position = mousePos;
-                break;
+            switch (GameState.Instance.CurrentSpell)
+            {
+                case Spell.NOTHING:
+                    GameObject attack = Instantiate(NothingPrefab);
+                    attack.transform.position = mousePos;
+                    break;
+                case Spell.FIRE:
+                    attack = Instantiate(FirePrefab);
+                    attack.transform.position = mousePos;
+                    break;
+            }
+
+            // If we don't have infinite, deduct one
+            if (GameState.Instance.Quantities[GameState.Instance.CurrentSpell] != -2)
+                GameState.Instance.Quantities[GameState.Instance.CurrentSpell]--;
         }
     }
 }

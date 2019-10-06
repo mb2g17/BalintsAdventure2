@@ -30,7 +30,7 @@ public class EnemyScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Attack"))
-            health -= 0.1f;
+            health -= collision.GetComponent<AttackScript>().Damage;
 
         if (health <= 0.01f)
         {
