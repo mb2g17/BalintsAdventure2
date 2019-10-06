@@ -257,9 +257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad483b701cd0764e8909c54aa812c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementForce: 70
-  JumpingForce: 2000
+  MovementForce: 80
+  JumpingForce: 2750
   PauseAnimator: {fileID: 0}
+  HealthBar: {fileID: 0}
 --- !u!95 &7606728468305857237
 Animator:
   serializedVersion: 3
