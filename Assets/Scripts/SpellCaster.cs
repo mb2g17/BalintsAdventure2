@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SpellCaster : MonoBehaviour
 {
+    public GameObject NothingPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,16 @@ public class SpellCaster : MonoBehaviour
 
     public void CastSpell()
     {
-        Debug.Log(GameState.Instance.CurrentSpell);
+        // Gets mouse position
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = -5;
+
+        switch (GameState.Instance.CurrentSpell)
+        {
+            case Spell.NOTHING:
+                GameObject attack = Instantiate(NothingPrefab);
+                attack.transform.position = mousePos;
+                break;
+        }
     }
 }
