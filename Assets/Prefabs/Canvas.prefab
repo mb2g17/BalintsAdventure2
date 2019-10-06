@@ -267,6 +267,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59c1ae41b7ccbe4cbc929f6a8248ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4239805228824520543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2379725512131811403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59c1ae41b7ccbe4cbc929f6a8248ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2379725513149405615
 GameObject:
   m_ObjectHideFlags: 0
@@ -3152,7 +3164,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: CHAINLIGHTNING
+  m_text: SPELLS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3221,7 +3233,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4239805227747149901}
-    characterCount: 14
+    characterCount: 6
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -8127,18 +8139,6 @@ MonoBehaviour:
   QuantityText: {fileID: 4239805228069874426}
   ShowNothingSprite: 0
   UnknownSpellSprite: {fileID: 21300000, guid: cd542b30dfca833468cf95798cebef35, type: 3}
---- !u!114 &4239805228824520543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2379725512131811403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b59c1ae41b7ccbe4cbc929f6a8248ba1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4239805228853570194
 GameObject:
   m_ObjectHideFlags: 0
@@ -11958,15 +11958,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d7b2a58f677a9a4da9274242aa81cb3, type: 3}
---- !u!224 &2379725512131811764 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2004290790483885804, guid: 1d7b2a58f677a9a4da9274242aa81cb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4239805228824520536}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2379725512131811403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2004290790483885843, guid: 1d7b2a58f677a9a4da9274242aa81cb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4239805228824520536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2379725512131811764 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2004290790483885804, guid: 1d7b2a58f677a9a4da9274242aa81cb3,
     type: 3}
   m_PrefabInstance: {fileID: 4239805228824520536}
   m_PrefabAsset: {fileID: 0}
