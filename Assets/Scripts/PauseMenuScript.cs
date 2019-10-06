@@ -219,7 +219,8 @@ public class PauseMenuScript : MonoBehaviour
 
         // Updates inventory
         GameState.Instance.Quantities[resultSpell1] += resultQuantity1;
-        GameState.Instance.Quantities[resultSpell2] += resultQuantity2;
+        if (resultSpell2 != Spell.NOTHING)
+            GameState.Instance.Quantities[resultSpell2] += resultQuantity2;
 
         // Clears model
         Slot1Spell = Spell.NOTHING;
