@@ -49,3 +49,9 @@ MonoBehaviour:
     type: 3}
   WaterPrefab: {fileID: 2584931777895287788, guid: 99f43c3a1f1c11d49aa2c0823426639c,
     type: 3}
+  WindPrefab: {fileID: 2584931777895287788, guid: d857869276e74e74296f423e2717b220,
+    type: 3}
+  EarthPrefab: {fileID: 2584931777895287788, guid: 447969ff02e3cf240aa867f6c46d6e79,
+    type: 3}
+  ThunderPrefab: {fileID: 2584931777895287788, guid: 637ebc013fd5d0f4ea8600bfe325de18,
+    type: 3}
