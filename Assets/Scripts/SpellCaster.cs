@@ -11,7 +11,8 @@ public class SpellCaster : MonoBehaviour
         WaterPrefab,
         WindPrefab,
         EarthPrefab,
-        ThunderPrefab;
+        ThunderPrefab,
+        SteamPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +61,12 @@ public class SpellCaster : MonoBehaviour
                 case Spell.THUNDER:
                     attack = Instantiate(ThunderPrefab);
                     attack.transform.position = mousePos;
+                    break;
+                case Spell.STEAM:
+                    Instantiate(SteamPrefab).transform.position = mousePos + new Vector3(1, 1, 0);
+                    Instantiate(SteamPrefab).transform.position = mousePos + new Vector3(-1, 1, 0);
+                    Instantiate(SteamPrefab).transform.position = mousePos + new Vector3(1, -1, 0);
+                    Instantiate(SteamPrefab).transform.position = mousePos + new Vector3(-1, -1, 0);
                     break;
             }
 

@@ -55,3 +55,5 @@ MonoBehaviour:
     type: 3}
   ThunderPrefab: {fileID: 2584931777895287788, guid: 637ebc013fd5d0f4ea8600bfe325de18,
     type: 3}
+  SteamPrefab: {fileID: 2584931777895287788, guid: aa7ff3470c3b64f4995d2b9d78c49062,
+    type: 3}
