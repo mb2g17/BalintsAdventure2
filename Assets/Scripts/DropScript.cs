@@ -7,7 +7,7 @@ public class DropScript : MonoBehaviour
 {
     public Spell ThisSpell;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<BalintScript>() != null)
         {
@@ -16,7 +16,7 @@ public class DropScript : MonoBehaviour
 
             GameState.Instance.Quantities[ThisSpell]++;
 
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }
