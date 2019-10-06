@@ -57,3 +57,23 @@ MonoBehaviour:
     type: 3}
   SteamPrefab: {fileID: 2584931777895287788, guid: aa7ff3470c3b64f4995d2b9d78c49062,
     type: 3}
+  SmokePrefab: {fileID: 2584931777895287788, guid: 94623cd68a1fea54b8aab34b4dc690a3,
+    type: 3}
+  LavaPrefab: {fileID: 2584931777895287788, guid: 2e0b4d8420c79014989b4ed472ef7385,
+    type: 3}
+  RainPrefab: {fileID: 2584931777895287788, guid: 6cf3c3bbc8ce4554baa8a268d7bf091c,
+    type: 3}
+  IcePrefab: {fileID: 2584931777895287788, guid: e5abe51659941534e9c5c3448afb9c59,
+    type: 3}
+  StormPrefab: {fileID: 2584931777895287788, guid: e04308a2445785c4183682b4246f87db,
+    type: 3}
+  ChainLightningPrefab: {fileID: 2584931777895287788, guid: 300ef4edea95eff4193dd0de60d5ccaf,
+    type: 3}
+  ExplosionPrefab: {fileID: 2584931777895287788, guid: 84c0c5d655b43bd419ba39ce2d8ab7f6,
+    type: 3}
+  PoisonPrefab: {fileID: 2584931777895287788, guid: c92266b1a7b93c149baccfad100f02d7,
+    type: 3}
+  BlizzardPrefab: {fileID: 2584931777895287788, guid: a72734c9bf9a0a945a357a447a9b1d15,
+    type: 3}
+  TsunamiPrefab: {fileID: 2584931777895287788, guid: d70029a6fead0cf4493e46a6024155c8,
+    type: 3}

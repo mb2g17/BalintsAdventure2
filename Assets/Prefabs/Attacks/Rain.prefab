@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8016605690008112271}
   - component: {fileID: 3614312528180783034}
   m_Layer: 0
-  m_Name: Thunder
+  m_Name: Rain
   m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a8d4e92dc27ab84da5dc4e1f1d2bf9b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c83ed63f423c04469b9a13fae4d511e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -133,4 +133,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3888552dc7a5d77429d075e8e534cd8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0.25
+  Damage: 0.1

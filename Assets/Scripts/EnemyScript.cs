@@ -35,7 +35,11 @@ public class EnemyScript : MonoBehaviour
         if (health <= 0.01f)
         {
             GameObject drop = Instantiate(Drop);
-            drop.transform.position = transform.position;
+            drop.transform.position = new Vector3(
+                transform.position.x,
+                transform.position.y,
+                drop.transform.position.z
+            );
 
             spriteRenderer.enabled = false;
             boxCollider2D.enabled = false;

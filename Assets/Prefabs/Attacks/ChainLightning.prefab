@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8016605690008112271}
   - component: {fileID: 3614312528180783034}
   m_Layer: 0
-  m_Name: Thunder
+  m_Name: ChainLightning
   m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,4 +133,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3888552dc7a5d77429d075e8e534cd8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0.25
+  Damage: 0.6
