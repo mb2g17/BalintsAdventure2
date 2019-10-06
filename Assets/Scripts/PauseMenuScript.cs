@@ -35,53 +35,64 @@ public class PauseMenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine("SlowUpdate");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Crafting UI
-        Slot1.Spell = Slot1Spell;
-        Slot1.Quantity = Slot1Quantity;
-        Slot2.Spell = Slot2Spell;
-        Slot2.Quantity = Slot2Quantity;
-        
-        // Fill out inventory
-        foreach (Spell spell in Enum.GetValues(typeof(Spell)))
-        {
-            // Except for nothing and everything
-            if (spell != Spell.NOTHING && spell != Spell.EVERYTHING)
-            {
-                // Get inventory quantity
-                int quantity = GameState.Instance.Quantities[spell];
 
-                // Fills in slot
-                UISlotScript slot = GetSlot(spell);
-                if (slot != null)
-                    slot.Quantity = quantity;
-            }
-        }
+    }
 
-        // Fills out combinations we've unlocked
-        UnlockedText.text = "";
-        foreach ((Spell, Spell) spellPair in GameState.Instance.Mappings.Keys)
+    private IEnumerator SlowUpdate()
+    {
+        while (true)
         {
-            if (GameState.Instance.LearnedMappings.Contains(spellPair))
+            yield return new WaitForSecondsRealtime(0.1f);
+
+            // Crafting UI
+            Slot1.Spell = Slot1Spell;
+            Slot1.Quantity = Slot1Quantity;
+            Slot2.Spell = Slot2Spell;
+            Slot2.Quantity = Slot2Quantity;
+
+            // Fill out inventory
+            foreach (Spell spell in Enum.GetValues(typeof(Spell)))
             {
-                (Spell, Spell) resultSpellPair = GameState.Instance.Mappings[spellPair];
-                UnlockedText.text +=
-                    spellPair.Item1.ToString() +
-                    " + " +
-                    spellPair.Item2.ToString() +
-                    " -> " +
-                    resultSpellPair.Item1.ToString() +
-                        (resultSpellPair.Item2 != Spell.NOTHING ?
-                         " + " + resultSpellPair.Item2.ToString() :
-                         "") +
-                    "\n";
+                // Except for nothing and everything
+                if (spell != Spell.NOTHING && spell != Spell.EVERYTHING)
+                {
+                    // Get inventory quantity
+                    int quantity = GameState.Instance.Quantities[spell];
+
+                    // Fills in slot
+                    UISlotScript slot = GetSlot(spell);
+                    if (slot != null)
+                        slot.Quantity = quantity;
+                }
             }
-            else
-                UnlockedText.text += "???\n";
+
+            // Fills out combinations we've unlocked
+            UnlockedText.text = "";
+            foreach ((Spell, Spell) spellPair in GameState.Instance.Mappings.Keys)
+            {
+                if (GameState.Instance.LearnedMappings.Contains(spellPair))
+                {
+                    (Spell, Spell) resultSpellPair = GameState.Instance.Mappings[spellPair];
+                    UnlockedText.text +=
+                        spellPair.Item1.ToString() +
+                        " + " +
+                        spellPair.Item2.ToString() +
+                        " -> " +
+                        resultSpellPair.Item1.ToString() +
+                            (resultSpellPair.Item2 != Spell.NOTHING ?
+                             " + " + resultSpellPair.Item2.ToString() :
+                             "") +
+                        "\n";
+                }
+                else
+                    UnlockedText.text += "???\n";
+            }
         }
     }
 
