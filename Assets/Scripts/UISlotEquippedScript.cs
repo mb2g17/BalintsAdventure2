@@ -12,6 +12,7 @@ public class UISlotEquippedScript : MonoBehaviour
     void Start()
     {
         uiSlot = GetComponent<UISlotScript>();
+        uiSlot.ShowNothingSprite = true;
     }
 
     // Update is called once per frame

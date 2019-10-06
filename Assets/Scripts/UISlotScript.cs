@@ -12,6 +12,8 @@ public class UISlotScript : MonoBehaviour
     public Image IconImage;
     public TextMeshProUGUI QuantityText;
 
+    public bool ShowNothingSprite = false;
+
     public Sprite UnknownSpellSprite;
 
     private SpellIconsScript spellIcons;
@@ -27,7 +29,7 @@ public class UISlotScript : MonoBehaviour
     {
         if (Quantity == -1) // If the spell is unknown, hide it
             FillImage(UnknownSpellSprite);
-        else if (Spell != Spell.NOTHING) // If the spell isn't just nothing, show its sprite
+        else if (Spell != Spell.NOTHING || ShowNothingSprite) // If the spell isn't just nothing, show its sprite
             FillImage(spellIcons.SpellIcons[Spell]);
         else // It's nothing; show nothing
             EmptyImage();
