@@ -110,13 +110,13 @@ namespace Assets.Scripts
             foreach (Spell spell in Enum.GetValues(typeof(Spell)))
                 Quantities[spell] = -1;
 
-            // Show the beginner spell
-            Quantities[Spell.NOTHING] = -2;
-
             // -- DEBUG --
             foreach (Spell spell in Enum.GetValues(typeof(Spell)))
                 Quantities[spell] = 100;
             // -----------
+
+            // Show the beginner spell
+            Quantities[Spell.NOTHING] = -2;
         }
 
         /// <summary>

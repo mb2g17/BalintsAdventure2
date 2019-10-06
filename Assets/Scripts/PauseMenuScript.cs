@@ -19,6 +19,8 @@ public class PauseMenuScript : MonoBehaviour
     }
     public List<InventorySlot> InventorySlots;
 
+    public Toggle SelectModeToggle, CraftModeToggle;
+
     // -- MODEL --
     [HideInInspector]
     public Spell Slot1Spell, Slot2Spell;
@@ -43,13 +45,17 @@ public class PauseMenuScript : MonoBehaviour
         // Fill out inventory
         foreach (Spell spell in Enum.GetValues(typeof(Spell)))
         {
-            // Get inventory quantity
-            int quantity = GameState.Instance.Quantities[spell];
+            // Except for nothing and everything
+            if (spell != Spell.NOTHING && spell != Spell.EVERYTHING)
+            {
+                // Get inventory quantity
+                int quantity = GameState.Instance.Quantities[spell];
 
-            // Fills in slot
-            UISlotScript slot = GetSlot(spell);
-            if (slot != null)
-                slot.Quantity = quantity;
+                // Fills in slot
+                UISlotScript slot = GetSlot(spell);
+                if (slot != null)
+                    slot.Quantity = quantity;
+            }
         }
     }
 
@@ -90,43 +96,57 @@ public class PauseMenuScript : MonoBehaviour
     
     public void SpellClick(string spellName)
     {
+        // Gets the spell
         Spell spell = (Spell) Enum.Parse(typeof(Spell), spellName);
 
-        // If this is a tier 3 spell, do nothing
-        if ((int)spell >= 13)
-            return;
-
-        // Deduct 1 from inventory
-        GameState.Instance.Quantities[spell]--;
-
-        // Increment if it's already in there
-        if (Slot1Spell == spell)
-            Slot1Quantity++;
-        else if (Slot2Spell == spell)
-            Slot2Quantity++;
-        else
+        // If we're crafting
+        if (CraftModeToggle.isOn)
         {
-            // Update craft model
-            if (Slot1Spell == Spell.NOTHING)
-            {
-                Slot1Spell = spell;
-                Slot1Quantity = 1;
-            }
-            else if (Slot2Spell == Spell.NOTHING)
-            {
-                Slot2Spell = spell;
-                Slot2Quantity = 1;
-            }
+            // If this is a tier 3 spell, do nothing
+            if ((int)spell >= 13)
+                return;
+
+            // Deduct 1 from inventory
+            GameState.Instance.Quantities[spell]--;
+
+            // Increment if it's already in there
+            if (Slot1Spell == spell)
+                Slot1Quantity++;
+            else if (Slot2Spell == spell)
+                Slot2Quantity++;
             else
             {
-                // Increment 1 from inventory (turns out we didn't move anything after all)
-                GameState.Instance.Quantities[spell]++;
+                // Update craft model
+                if (Slot1Spell == Spell.NOTHING)
+                {
+                    Slot1Spell = spell;
+                    Slot1Quantity = 1;
+                }
+                else if (Slot2Spell == Spell.NOTHING)
+                {
+                    Slot2Spell = spell;
+                    Slot2Quantity = 1;
+                }
+                else
+                {
+                    // Increment 1 from inventory (turns out we didn't move anything after all)
+                    GameState.Instance.Quantities[spell]++;
+                }
             }
+        }
+        else
+        {
+            // Set this to equipped
+            GameState.Instance.CurrentSpell = spell;
         }
     }
 
     public void Craft()
     {
+        // If either of the spells are nothing, do not craft
+        if (Slot1Spell == Spell.NOTHING || Slot2Spell == Spell.NOTHING)
+            return;
+
         // Crafts
         (Spell resultSpell1,
          int resultQuantity1,
@@ -136,11 +156,6 @@ public class PauseMenuScript : MonoBehaviour
         // Updates inventory
         GameState.Instance.Quantities[resultSpell1] += resultQuantity1;
         GameState.Instance.Quantities[resultSpell2] += resultQuantity2;
-
-        Debug.Log(resultSpell1);
-        Debug.Log(resultQuantity1);
-        Debug.Log(resultSpell2);
-        Debug.Log(resultQuantity2);
 
         // Clears model
         Slot1Spell = Spell.NOTHING;
