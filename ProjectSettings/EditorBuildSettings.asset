@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/FireArea.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/WaterArea.unity
+    guid: 8fd8107ad48781a46b065df82404d566
+  - enabled: 1
+    path: Assets/Scenes/WindArea.unity
+    guid: 60ceddc9447f587449515af61355a9b9
+  - enabled: 1
+    path: Assets/Scenes/EarthArea.unity
+    guid: fd12f4f91f3092e4fa62bb9d4a7b531f
+  - enabled: 1
+    path: Assets/Scenes/ThunderArea.unity
+    guid: 797ae9689484ab74b8dd5634f0bd5ad4
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: d49ab6c7556f9d549adf69b4f94e9d39
   - enabled: 1
