@@ -9,6 +9,8 @@ public class EnemyScript : MonoBehaviour
 
     public Image HealthBar;
 
+    public GameObject Drop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +25,14 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("HIT");
         if (collision.CompareTag("Attack"))
             health -= 0.1f;
 
         if (health <= 0.01f)
+        {
+            GameObject drop = Instantiate(Drop);
+            drop.transform.position = transform.position;
             Destroy(gameObject);
+        }
     }
 }
