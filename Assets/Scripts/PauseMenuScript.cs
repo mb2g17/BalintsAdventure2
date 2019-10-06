@@ -22,7 +22,7 @@ public class PauseMenuScript : MonoBehaviour
 
     public Toggle SelectModeToggle, CraftModeToggle;
 
-    public TextMeshProUGUI UnlockedText;
+    public TextMeshProUGUI UnlockedText, SpellPreview;
 
     // -- MODEL --
     [HideInInspector]
@@ -117,6 +117,19 @@ public class PauseMenuScript : MonoBehaviour
                 return InventorySlots[i].slot;
         }
         return null;
+    }
+
+    public void SpellHover(string spellName)
+    {
+        // Gets the spell
+        Spell spell = (Spell)Enum.Parse(typeof(Spell), spellName);
+
+        // If we don't even know what this spell is, do nothing
+        if (GameState.Instance.Quantities[spell] == -1)
+            return;
+
+        // Puts spell name on display
+        SpellPreview.text = spell.ToString();
     }
     
     public void SpellClick(string spellName)
