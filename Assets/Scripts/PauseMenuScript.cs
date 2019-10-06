@@ -135,6 +135,10 @@ public class PauseMenuScript : MonoBehaviour
             if ((int)spell >= 13)
                 return;
 
+            // If we don't have any of these anymore, do nothing
+            if (GameState.Instance.Quantities[spell] == 0)
+                return;
+
             // Deduct 1 from inventory
             GameState.Instance.Quantities[spell]--;
 
