@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,8 @@ public class PauseMenuScript : MonoBehaviour
     public List<InventorySlot> InventorySlots;
 
     public Toggle SelectModeToggle, CraftModeToggle;
+
+    public TextMeshProUGUI UnlockedText;
 
     // -- MODEL --
     [HideInInspector]
@@ -56,6 +59,28 @@ public class PauseMenuScript : MonoBehaviour
                 if (slot != null)
                     slot.Quantity = quantity;
             }
+        }
+
+        // Fills out combinations we've unlocked
+        UnlockedText.text = "";
+        foreach ((Spell, Spell) spellPair in GameState.Instance.Mappings.Keys)
+        {
+            if (GameState.Instance.LearnedMappings.Contains(spellPair))
+            {
+                (Spell, Spell) resultSpellPair = GameState.Instance.Mappings[spellPair];
+                UnlockedText.text +=
+                    spellPair.Item1.ToString() +
+                    " + " +
+                    spellPair.Item2.ToString() +
+                    " -> " +
+                    resultSpellPair.Item1.ToString() +
+                        (resultSpellPair.Item2 != Spell.NOTHING ?
+                         " + " + resultSpellPair.Item2.ToString() :
+                         "") +
+                    "\n";
+            }
+            else
+                UnlockedText.text += "???\n";
         }
     }
 

@@ -17,7 +17,7 @@ namespace Assets.Scripts
         /// </summary>
         public readonly Dictionary<Spell, int> Quantities = new Dictionary<Spell, int>();
 
-        private readonly Dictionary<(Spell, Spell), (Spell, Spell)> mappings = new Dictionary<(Spell, Spell), (Spell, Spell)>()
+        public readonly Dictionary<(Spell, Spell), (Spell, Spell)> Mappings = new Dictionary<(Spell, Spell), (Spell, Spell)>()
         {
             { (Spell.FIRE, Spell.WATER),    (Spell.STEAM, Spell.NOTHING) },
             { (Spell.FIRE, Spell.WIND),     (Spell.SMOKE, Spell.NOTHING) },
@@ -126,13 +126,14 @@ namespace Assets.Scripts
         {
             // Add to learned mappings
             LearnedMappings.Add((spell1, spell2));
+            LearnedMappings.Add((spell2, spell1));
 
             // Gets the two spells from this
             Spell resultSpell1, resultSpell2;
-            if (mappings.ContainsKey((spell1, spell2)))
-                (resultSpell1, resultSpell2) = mappings[(spell1, spell2)];
+            if (Mappings.ContainsKey((spell1, spell2)))
+                (resultSpell1, resultSpell2) = Mappings[(spell1, spell2)];
             else
-                (resultSpell1, resultSpell2) = mappings[(spell2, spell1)];
+                (resultSpell1, resultSpell2) = Mappings[(spell2, spell1)];
 
             // Gets the new quantity
             int newQuantity = (quantity1 + quantity2) / 3;
