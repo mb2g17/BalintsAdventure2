@@ -93,6 +93,11 @@ public class PauseMenuScript : MonoBehaviour
                 else
                     UnlockedText.text += "???\n";
             }
+
+            if (GameState.Instance.Mappings.Count == GameState.Instance.LearnedMappings.Count)
+            {
+                SceneManager.LoadScene("PreWin");
+            }
         }
     }
 

@@ -40,7 +40,8 @@ public class BalintScript : MonoBehaviour
     void Update()
     {
         // Update health
-        HealthBar.fillAmount = health;
+        if (HealthBar != null)
+            HealthBar.fillAmount = health;
 
         // If time is moving
         if (Time.timeScale > 0)
@@ -90,15 +91,18 @@ public class BalintScript : MonoBehaviour
         // Pausing
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(1))
         {
-            if (PauseAnimator.GetBool("Pause"))
+            if (PauseAnimator != null)
             {
-                PauseAnimator.SetBool("Pause", false);
-                Time.timeScale = 1;
-            }
-            else
-            {
-                PauseAnimator.SetBool("Pause", true);
-                Time.timeScale = 0;
+                if (PauseAnimator.GetBool("Pause"))
+                {
+                    PauseAnimator.SetBool("Pause", false);
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    PauseAnimator.SetBool("Pause", true);
+                    Time.timeScale = 0;
+                }
             }
         }
     }
