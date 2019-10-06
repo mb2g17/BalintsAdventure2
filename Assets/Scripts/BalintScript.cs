@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Balint character script
@@ -12,6 +14,8 @@ public class BalintScript : MonoBehaviour
     private Animator animator;
     private SpellCaster spellCaster;
 
+    private float health = 1;
+
     /// <summary>
     /// How much force we will move
     /// </summary>
@@ -20,6 +24,8 @@ public class BalintScript : MonoBehaviour
     public float JumpingForce = 5;
 
     public Animator PauseAnimator;
+
+    public Image HealthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +38,9 @@ public class BalintScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Update health
+        HealthBar.fillAmount = health;
+
         // If time is moving
         if (Time.timeScale > 0)
         {
@@ -90,6 +99,17 @@ public class BalintScript : MonoBehaviour
                 PauseAnimator.SetBool("Pause", true);
                 Time.timeScale = 0;
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+            health -= 0.1f;
+
+        // If health is 0, game over
+        if (health <= 0.01f)
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
