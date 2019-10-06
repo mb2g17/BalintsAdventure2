@@ -99,6 +99,10 @@ public class PauseMenuScript : MonoBehaviour
         // Gets the spell
         Spell spell = (Spell) Enum.Parse(typeof(Spell), spellName);
 
+        // If we don't even know what this spell is, do nothing
+        if (GameState.Instance.Quantities[spell] == -1)
+            return;
+
         // If we're crafting
         if (CraftModeToggle.isOn)
         {
@@ -162,5 +166,13 @@ public class PauseMenuScript : MonoBehaviour
         Slot1Quantity = 0;
         Slot2Spell = Spell.NOTHING;
         Slot2Quantity = 0;
+    }
+
+    /// <summary>
+    /// Unequips spell, leaving nothing
+    /// </summary>
+    public void Unequip()
+    {
+        GameState.Instance.CurrentSpell = Spell.NOTHING;
     }
 }

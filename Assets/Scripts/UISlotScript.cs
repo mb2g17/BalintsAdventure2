@@ -12,6 +12,8 @@ public class UISlotScript : MonoBehaviour
     public Image IconImage;
     public TextMeshProUGUI QuantityText;
 
+    public Sprite UnknownSpellSprite;
+
     private SpellIconsScript spellIcons;
 
     // Start is called before the first frame update
@@ -23,15 +25,25 @@ public class UISlotScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Spell != Spell.NOTHING)
+        if (Quantity == -1) // If the spell is unknown, hide it
+            FillImage(UnknownSpellSprite);
+        else if (Spell != Spell.NOTHING) // If the spell isn't just nothing, show its sprite
             FillImage(spellIcons.SpellIcons[Spell]);
-        else
+        else // It's nothing; show nothing
             EmptyImage();
 
-        if (Quantity == -2)
-            QuantityText.text = "∞";
+        // If we've actually discovered this spell
+        if (Quantity != -1)
+        {
+            if (Quantity == -2)
+                QuantityText.text = "∞";
+            else
+                QuantityText.text = "" + Quantity;
+        }
         else
-            QuantityText.text = "" + Quantity;
+        {
+            QuantityText.text = "";
+        }
     }
 
     private void EmptyImage()

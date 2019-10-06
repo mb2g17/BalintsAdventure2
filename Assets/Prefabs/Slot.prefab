@@ -200,6 +200,7 @@ MonoBehaviour:
   Quantity: 0
   IconImage: {fileID: 2004290789711280234}
   QuantityText: {fileID: 3228313948665595095}
+  UnknownSpellSprite: {fileID: 21300000, guid: cd542b30dfca833468cf95798cebef35, type: 3}
 --- !u!1 &6203660076376892807
 GameObject:
   m_ObjectHideFlags: 0
